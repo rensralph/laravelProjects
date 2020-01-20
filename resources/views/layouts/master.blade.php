@@ -3,14 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | User Profile</title>
+  <title>Trabaho | Dashboard</title>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="/css/app.css">
 </head>
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
+<div class="wrapper" id="app">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -48,7 +49,7 @@
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">LarAdmin</span>
+      <span class="brand-text font-weight-light">TRABAHO</span>
     </a>
 
     <!-- Sidebar -->
@@ -59,7 +60,7 @@
           <img src="./img/boss.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
 
@@ -69,33 +70,76 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <router-link to="/dashboard" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
-                <i class="right fas fa-angle-left"></i>
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item has-treeview">
+            <router-link to="/admin" class="nav-link">
+              <i class="nav-icon fas fa-user-tie"></i>
+              <p>
+                Admin
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item has-treeview">
+            <router-link to="/company" class="nav-link">
+              <i class="nav-icon fas fa-building"></i>
+              <p>
+                Company
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item has-treeview">
+            <router-link to="/workers" class="nav-link">
+              <i class="nav-icon fas fa-hard-hat"></i>
+              <p>
+                Workers
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item has-treeview">
+            <router-link to="/customers" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Customers
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item has-treeview">
+            <router-link to="/jobs" class="nav-link">
+              <i class="nav-icon fas fa-briefcase"></i>
+              <p>
+                Jobs
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item has-treeview">
+            <router-link to="/reviews" class="nav-link">
+              <i class="nav-icon fas fa-star"></i>
+              <p>
+                Reviews
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item has-treeview">
+            <router-link to="alerts" class="nav-link">
+              <i class="nav-icon fas fa-thumbs-down"></i>
+              <p>
+                Decline/Cancelled Alert
+              </p>
+            </router-link>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-power-off"></i>
+              <p>
+                Logout
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../../index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../../index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../../index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
-                </a>
-              </li>
-            </ul>
           </li>
         </ul>
       </nav>
@@ -107,16 +151,20 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-
+    <div class="content">
+      <div class="container-fluid">
+        <router-view></router-view>
+      </div>
+    </div>
     
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.0.2
+      <b>Version</b> 0.0.1
     </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    <strong>Copyright &copy; 2020 <a href="http://adminlte.io">rensralph.io</a>.</strong> All rights
     reserved.
   </footer>
 
